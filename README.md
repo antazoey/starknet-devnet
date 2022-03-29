@@ -207,11 +207,6 @@ python3 -m test.test_cli
 python3 -m test.test_cli_auth
 ```
 
-To see if Devnet can interact with the Hardhat plugin, set environment variables `HARDHAT_CONFIG_FILE` and `TEST_FILE` and run:
-```text
-./test/test_plugin.sh
-```
-
 Other tests in the `test` directory use `pytest`, so run them with:
 ```text
 poetry run pytest <TEST_FILE>

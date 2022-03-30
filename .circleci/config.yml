@@ -12,9 +12,10 @@ aliases:
 
 jobs:
   test:
-    machine:
-      image: ubuntu-2004:202107-02
+    docker:
+      - image: cimg/python:3.7.12-node
     resource_class: medium
+    parallelism: 2
     steps:
       - checkout
       - run:
@@ -31,16 +32,24 @@ jobs:
           command: ./scripts/setup_example.sh
       - run:
           name: Run pytest tests
-          command: poetry run pytest -s -vv test
+          parallel: true
+          command: |
+            TESTFILES=$(circleci tests glob test/test*.py | circleci tests split --split-by=timings)
+            mkdir -p test-results
+            poetry run pytest -s --junitxml=test-results/junit.xml -vv $TESTFILES
+      - store_test_results:
+          path: test-results
   package_build_and_publish:
     docker:
       - image: cimg/python:3.7
+    resource_class: medium
     steps:
       - checkout
       - run: ./scripts/package_build_and_publish.sh
   image_build_and_push:
     docker:
       - image: cimg/base:2021.04
+    resource_class: medium
     steps:
       - checkout
       - setup_remote_docker:

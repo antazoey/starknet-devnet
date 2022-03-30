@@ -13,7 +13,7 @@ aliases:
 jobs:
   test:
     docker:
-      - image: cimg/python:3.7.12
+      - image: cimg/python:3.7.12-node
     resource_class: medium
     parallelism: 2
     steps:

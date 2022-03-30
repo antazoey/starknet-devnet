@@ -11,12 +11,12 @@ mkdir -p $ARTIFACTS_DIRECTORY
 
 echo "Compiling contracts with $(starknet-compile --version)"
 
-# compile all test contracts
-for contract in "$TEST_DIRECTORY"/*.cairo; do
+# compile Cairo test contracts
+for contract in "$TEST_DIRECTORY"/cairo/*.cairo; do
     echo "Compiling $contract"
 
     # create contract directory
-    directory=$ARTIFACTS_DIRECTORY/"${contract##*/}"
+    directory=$ARTIFACTS_DIRECTORY/cairo/"${contract##*/}"
     mkdir -p "$directory"
 
 

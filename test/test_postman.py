@@ -21,7 +21,7 @@ from .shared import ARTIFACTS_PATH
 CONTRACT_PATH = f"{ARTIFACTS_PATH}/l1l2.cairo/l1l2.json"
 ABI_PATH = f"{ARTIFACTS_PATH}/l1l2.cairo/l1l2_abi.json"
 
-ETH_CONTRACTS_PATH = "test/artifacts/contracts/solidity"
+ETH_CONTRACTS_PATH = "artifacts/contracts/solidity"
 STARKNET_MESSAGING_PATH = f"{ETH_CONTRACTS_PATH}/MockStarknetMessaging.sol/MockStarknetMessaging.json"
 L1L2_EXAMPLE_PATH = f"{ETH_CONTRACTS_PATH}/L1L2.sol/L1L2Example.json"
 

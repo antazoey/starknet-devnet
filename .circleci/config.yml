@@ -28,9 +28,6 @@ jobs:
           name: Lint
           command: poetry run pylint starknet_devnet test
       - run:
-          name: Setup example
-          command: ./scripts/setup_example.sh
-      - run:
           name: Compile test contracts
           command: ./scripts/compile_contracts.sh
       - run:

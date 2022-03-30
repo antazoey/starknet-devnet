@@ -196,11 +196,6 @@ poetry run starknet-devnet
 ### Development - Test
 When running tests locally, do it from the project root.
 
-Setup an example project by running:
-```text
-./scripts/setup_example.sh
-```
-
 To see if Devnet can interact with starknet CLI commands, run:
 ```text
 python3 -m test.test_cli

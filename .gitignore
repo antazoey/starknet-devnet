@@ -5,3 +5,4 @@ dist/
 starknet-hardhat-example
 .vscode/
 test/build/
+test/artifacts/

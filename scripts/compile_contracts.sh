@@ -9,9 +9,13 @@ rm -rf $ARTIFACTS_DIRECTORY
 # create artifacts directory
 mkdir -p $ARTIFACTS_DIRECTORY
 
-echo "Compiling contracts with $(starknet-compile --version)"
+# compile Solidity test contracts first
+# order matters as Hardhat will remove Cairo artifacts
+echo "Compiling Solidity contracts with Hardhat $(npx hardhat --version)"
+npx hardhat compile
 
 # compile Cairo test contracts
+echo "Compiling Cairo contracts with $(starknet-compile --version)"
 for contract in "$TEST_DIRECTORY"/cairo/*.cairo; do
     echo "Compiling $contract"
 
@@ -26,8 +30,5 @@ for contract in "$TEST_DIRECTORY"/cairo/*.cairo; do
 
     starknet-compile --output "$output" --abi "$abi" "$contract"
 done
-
-# compile Solidity test contracts
-npx hardhat compile
 
 echo "Done"

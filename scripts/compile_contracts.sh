@@ -9,6 +9,8 @@ rm -rf $ARTIFACTS_DIRECTORY
 # create artifacts directory
 mkdir -p $ARTIFACTS_DIRECTORY
 
+echo "Compiling contracts with $(starknet-compile --version)"
+
 # compile all test contracts
 for contract in "$TEST_DIRECTORY"/*.cairo; do
     echo "Compiling $contract"

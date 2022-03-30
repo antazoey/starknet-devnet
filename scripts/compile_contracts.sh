@@ -16,8 +16,9 @@ npx hardhat compile
 
 # compile Cairo test contracts
 echo "Compiling Cairo contracts with $(starknet-compile --version)"
+
+NUMBER_OF_CONTRACTS=0
 for contract in "$TEST_DIRECTORY"/cairo/*.cairo; do
-    echo "Compiling $contract"
 
     # create contract directory
     directory=$ARTIFACTS_DIRECTORY/contracts/cairo/"${contract##*/}"
@@ -29,6 +30,7 @@ for contract in "$TEST_DIRECTORY"/cairo/*.cairo; do
     abi=$directory/"${basename%.*}_abi.json"
 
     starknet-compile --output "$output" --abi "$abi" "$contract"
+    NUMBER_OF_CONTRACTS=$((NUMBER_OF_CONTRACTS+1))
 done
 
-echo "Done"
+echo "Compiled $NUMBER_OF_CONTRACTS Cairo files successfully"

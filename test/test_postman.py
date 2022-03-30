@@ -33,7 +33,7 @@ def run_before_and_after_test():
     # Setup L1 testnet
     command = ["npx", "hardhat", "node"]
     # pylint: disable=consider-using-with
-    l1_proc = subprocess.Popen(command,cwd="starknet-hardhat-example", close_fds=True, stdout=subprocess.PIPE)
+    l1_proc = subprocess.Popen(command, close_fds=True, stdout=subprocess.PIPE)
     time.sleep(25)
     yield
 

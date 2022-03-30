@@ -16,7 +16,7 @@ for contract in "$TEST_DIRECTORY"/cairo/*.cairo; do
     echo "Compiling $contract"
 
     # create contract directory
-    directory=$ARTIFACTS_DIRECTORY/cairo/"${contract##*/}"
+    directory=$ARTIFACTS_DIRECTORY/contracts/cairo/"${contract##*/}"
     mkdir -p "$directory"
 
 
@@ -26,5 +26,8 @@ for contract in "$TEST_DIRECTORY"/cairo/*.cairo; do
 
     starknet-compile --output "$output" --abi "$abi" "$contract"
 done
+
+# compile Solidity test contracts
+npx hardhat compile
 
 echo "Done"

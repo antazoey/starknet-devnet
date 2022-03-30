@@ -6,3 +6,7 @@ starknet-hardhat-example
 .vscode/
 test/build/
 test/artifacts/
+
+# Hardhat specific
+node_modules/
+hardhat-cache/
